@@ -2,10 +2,121 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="robots" content="noindex, nofollow" />
+    <title>Style Guide</title>
+
+    <!-- Bootstrap -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    /> -->
+
+    <!-- code-prettify -->
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+    <link rel="stylesheet" href="reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
   </head>
   <body>
-    <h1>Hello,World!</h1>
+    <div class="inner-layout">
+      <h1>Hello, world!</h1>
+
+      <section>
+        <h2>c-red-box</h2>
+        <div class="c-red-box">
+          <a href="#" class="c-red-box__outer">
+            <div class="c-red-box__inner">
+              <p class="c-red-box__text">
+                初回体験無料キャンペーン中<br />
+                無料体験に申し込む
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="container">
+          <pre class="prettyprint linenums language-html">
+            <div class="c-red-box">
+              <a href="#" class="c-red-box__outer">
+                <div class="c-red-box__inner">
+                  <p class="c-red-box__text">
+                    初回体験無料キャンペーン中<br />
+                    無料体験に申し込む
+                  </p>
+                </div>
+              </a>
+            </div>
+          </pre>
+
+          <pre class="prettyprint linenums language-css">
+            .c-red-box__outer {
+              position: relative;
+              display: inline-block;
+              padding: 11px;
+              border-radius: 6px;
+              box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+              background: linear-gradient(30deg, #b30d10 0%, #3c0000 100%);
+            }
+            
+            .c-red-box__inner {
+              background: linear-gradient(30deg, #e40012 0%, #5b0002 100%);
+              box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+            }
+          
+            .c-red-box__text {
+              color: #fff;
+              font-size: 29px;
+              line-height: 46px;
+              padding: 20px 32px 15px 32px;
+              filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+            }
+          </pre>
+        </div>
+      </section>
+
+      <script type="text/javascript">
+        // ソースコードのHTMLのエスケープ
+        elements = document.getElementsByTagName("pre");
+        Array.from(elements).forEach((element) => {
+          let lookup = {
+            "&": "&amp;",
+            '"': "&quot;",
+            "'": "&apos;",
+            "<": "&lt;",
+            ">": "&gt;",
+          };
+          element.innerHTML = element.innerHTML.replace(
+            /[&"'<>]/g,
+            (c) => lookup[c]
+          );
+        });
+
+        // ソースコードのインデントの正常化
+        [].forEach.call(document.querySelectorAll("pre"), function (e) {
+          var lines = e.innerHTML.split("\n");
+          var matches;
+          //
+          var indentation =
+            (matches = /^\s+/.exec(lines[0])) != null ? matches[0] : null;
+          if (!!indentation) {
+            lines = lines.map(function (line) {
+              return line.replace(indentation, "");
+            });
+            return (e.innerHTML = lines.join("\n"));
+          }
+        });
+      </script>
+
+      <!-- Bootstrap -->
+      <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script> -->
+    </div>
   </body>
 </html>
